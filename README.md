@@ -1,15 +1,28 @@
 # Telkom Travel
-## List Fitur
-    - A
-    - B
-    - C
-## Pembagian Tugas
+
+## Detail
+
 Nama Kelompok : Teltrev
-Nama Team :  
+Nama Team : 
     - Achmad Rozan Chaidir
     - Muhammad Hafidz Alkhair Pasaribu
 Nama Project : Telkom Travel
 
-Capture : 
-xxxxxxx
-Link host project
+## List Fitur
+
+    -A
+    -B
+    -C
+    
+## Skema Database
+
+Capture
+
+## Pembagian Tugas
+
+    - Achmad Rozan Chaidir
+    - Muhammad Hafidz Alkhair Pasaribu
+
+## Demo
+
+Link
