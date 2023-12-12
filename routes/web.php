@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
     });
     Route::get('/car', [CarController::class, 'index'])->name('car.index');
     Route::get('/type', [TypeController::class, 'index'])->name('type.index');
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
 });
 Route::prefix('user')->group(function () { // routing uuntuk user tipe non admin
     Route::get('/', function () {

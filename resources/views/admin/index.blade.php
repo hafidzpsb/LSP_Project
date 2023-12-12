@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
       <div class="container-fluid">
           <a href="#">
-              <img src="assets/Telkom Travel.png" style="width: 100px; margin: 10px">
+              <img src="/assets/Telkom Travel.png" style="width: 100px; margin: 10px">
           </a>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -20,7 +20,7 @@
             <a class="nav-link active" href="/admin">Home</a>
             <a class="nav-link" href="/admin/car">Mobil</a>
             <a class="nav-link" href="/admin/type">Kategori</a>
-            <a class="nav-link" href="/admin">User</a>
+            <a class="nav-link" href="/admin/user">User</a>
           </div>
         </div>
         <div style="width: 300px;" class="container text-end">
@@ -56,7 +56,7 @@
               </div>
               <div style="margin-left:150px;" class="col-8 col-md-4">
                 <img style="width: 300px; margin-top:50px;" src="assets/Telkom Travel-fullwhite.png" alt="">
-                <h6 class="text-white">Copyright 2022</h6>
+                <h6 class="text-white">Copyright 2023</h6>
               </div>
       </footer>
 </body>

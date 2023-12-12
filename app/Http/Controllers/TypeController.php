@@ -16,6 +16,7 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'kode_mobil' => 'required|string',
             'tipe_mobil' => 'required|string',
             'brand_mobil' => 'required|string',
         ]);

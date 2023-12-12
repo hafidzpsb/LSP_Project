@@ -33,24 +33,31 @@
       </div>
     </nav>
     <center>
-        <h1 style="margin: 50px;"><u>List Mobil</u></h1>
+        <h1 style="margin: 50px;"><u>List User</u></h1>
     </center>
     <div class="container">
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">ID Mobil</th>
-                <th scope="col">Nama Mobil</th>
-                <th scope="col">Jumlah</th>
+                <th scope="col">ID User</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tipe</th>
                 <th colspan="2" scope="colgroup"><center>Aksi</center></th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($car_index as $car)
+              @foreach ($user_index as $user)
               <tr>
-                <td>{{ $car->id_mobil }}</td>
-                <td>{{ $car->nama_mobil }}</td>
-                <td>{{ $car->jumlah }}</td>
+                <td>{{ $user->id_user }}</td>
+                <td>{{ $user->username }}</td>
+                <td>{{ $user->email }}</td>
+                <?php if ($user -> isAdmin == 1)
+                { ?>
+                  <td> Admin </td>
+                <?php } else { ?>
+                  <td> User</td>
+                <?php } ?>
                 <td width="100px" center><center><a name="update" id="update" href="" class="btn btn-warning mb-3 mt-3 w-100">Edit</a></center></td>
                 <td width="100px" center><center><a name="delete" id="delete" href="" class="btn btn-danger mb-3 mt-3 w-100">Delete</a></center></td>
               </tr>

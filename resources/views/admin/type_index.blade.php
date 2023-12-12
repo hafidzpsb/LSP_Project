@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
       <div class="container-fluid">
           <a href="#">
-              <img src="assets/Telkom Travel.png" style="width: 100px; margin: 10px">
+              <img src="/assets/Telkom Travel.png" style="width: 100px; margin: 10px">
           </a>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="/admin">Home</a>
             <a class="nav-link" href="/admin/car">Mobil</a>
-            <a class="nav-link active" href="/admin/type">Kategori</a>
-            <a class="nav-link" href="/admin">User</a>
+            <a class="nav-link" href="/admin/type">Kategori</a>
+            <a class="nav-link active" href="/admin/user">User</a>
           </div>
         </div>
         <div style="width: 300px;" class="container text-end">
@@ -33,7 +33,7 @@
       </div>
     </nav>
     <center>
-        <h1 style="margin-top: 100px;">Request Order</h1>
+        <h1 style="margin: 50px;"><u>Kategori Mobil<u></h1>
     </center>
     <div class="container">
       <table class="table">
@@ -41,8 +41,10 @@
           <tr>
             <th scope="col">ID Kategori</th>
             <th scope="col">ID Mobil</th>
+            <th scope="col">Kode Mobil</th>
             <th scope="col">Tipe Mobil</th>
             <th scope="col">Brand Mobil</th>
+            <th colspan="2" scope="colgroup"><center>Aksi</center></th>
           </tr>
         </thead>
         <tbody>
@@ -50,17 +52,18 @@
           <tr>
             <td>{{ $type->id_kategori }}</td>
             <td>{{ $type->id_mobil }}</td>
+            <td>{{ $type->kode_mobil }}</td>
             <td>{{ $type->tipe_mobil }}</td>
             <td>{{ $type->brand_mobil }}</td>
-            <td><img style="width: 20px;" src="assets/close.png" alt=""></td>
-            <td><img style="width: 20px;" src="assets/check.png" alt=""></td>
+            <td width="100px" center><center><a name="update" id="update" href="" class="btn btn-warning mb-3 mt-3 w-100">Edit</a></center></td>
+            <td width="100px" center><center><a name="delete" id="delete" href="" class="btn btn-danger mb-3 mt-3 w-100">Delete</a></center></td>
           </tr>
           @endforeach
         </tbody>
       </table>
     </div>
     <footer>
-        <div class="container-fluid fixed-bottom" style="background-color: rgb(96, 96, 96);">
+        <div class="container-fluid" style="background-color: rgb(96, 96, 96);">
           <div class="container text-center">
             <!-- Stack the columns on mobile by making one full-width and the other half-width -->
             <div class="row">
@@ -83,7 +86,7 @@
               </div>
               <div style="margin-left:150px;" class="col-8 col-md-4">
                 <img style="width: 300px; margin-top:50px;" src="assets/Telkom Travel-fullwhite.png" alt="">
-                <h6 class="text-white">Copyright 2022</h6>
+                <h6 class="text-white">Copyright 2023</h6>
               </div>
       </footer>
 </body>
