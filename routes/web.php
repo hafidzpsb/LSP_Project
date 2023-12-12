@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
     Route::get('/type/edit/{id_kategori}', [TypeController::class, 'edit'])->name('type.edit');
     Route::post('/type/update/{id_kategori}', [TypeController::class, 'update'])->name('type.update');
     Route::get('/type/delete/{id_kategori}', [TypeController::class, 'delete'])->name('type.delete');
-    
+
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
 });
 Route::prefix('user')->group(function () { // routing uuntuk user tipe non admin
@@ -42,3 +43,6 @@ Route::prefix('user')->group(function () { // routing uuntuk user tipe non admin
         return view('user/index');
     });
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

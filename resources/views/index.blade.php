@@ -6,7 +6,7 @@
     <title>Telkom Travel</title>
     <link rel="icon" href="assets/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
@@ -56,7 +56,7 @@
           </div>
           </div>
         </div>
-      </div>    
+      </div>
     </section>
     </header>
     <section class="page-section bg-primary text-dark mb-0" id="lokasikami">
@@ -189,7 +189,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <a href="user_index.html">
           <button type="button" class="btn btn-danger">Login</button>
-        </a> 
+        </a>
       </div>
     </div>
   </div>
