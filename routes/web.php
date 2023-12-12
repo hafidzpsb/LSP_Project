@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
+    Route::get('/', function () {
+        return view('admin/index');
+    });
+});
+Route::prefix('user')->group(function () { // routing uuntuk user tipe non admin
+    Route::get('/', function () {
+        return view('user/index');
+    });
+});
