@@ -17,8 +17,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="admin.html">Accept</a>
-            <a class="nav-link active" href="#">Request Order</a>
+            <a class="nav-link" href="/admin">Home</a>
+            <a class="nav-link" href="/admin/car">Mobil</a>
+            <a class="nav-link active" href="/admin/type">Kategori</a>
+            <a class="nav-link" href="/admin">User</a>
           </div>
         </div>
         <div style="width: 300px;" class="container text-end">
@@ -34,62 +36,28 @@
         <h1 style="margin-top: 100px;">Request Order</h1>
     </center>
     <div class="container">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID Order</th>
-                <th scope="col">Name</th>
-                <th scope="col">Class</th>
-                <th scope="col">Location</th>
-                <th scope="col">Destination</th>
-                <th scope="col">Book Date</th>
-                <th scope="col">Seat</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">0000465786</th>
-                <td>Abdul Malik</td>
-                <td>Economy</td>
-                <td>Jakarta</td>
-                <td>Bandung</td>
-                <td>04-11-2022</td>
-                <td>2B</td>
-                <td>Rp 70.000</td>
-                <td><img style="width: 20px;" src="assets/close.png" alt=""></td>
-                <td><img style="width: 20px;" src="assets/check.png" alt=""></td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th scope="row">0000764511</th>
-                <td>Kemal Ahmad</td>
-                <td>Ekonomi</td>
-                <td>Bandung</td>
-                <td>Malang</td>
-                <td>05-11-2022</td>
-                <td>1A</td>
-                <td>Rp 70.000</td>
-                <td><img style="width: 20px;" src="assets/close.png" alt=""></td>
-                <td><img style="width: 20px;" src="assets/check.png" alt=""></td>
-              </tr>
-            </tbody>
-            <tbody>
-              <tr>
-                <th scope="row">0000764897</th>
-                <td>Ucennnnnn</td>
-                <td>Business</td>
-                <td>Surabaya</td>
-                <td>Semarang</td>
-                <td>05-11-2022</td>
-                <td>3A</td>
-                <td>Rp 85.000</td>
-                <td><img style="width: 20px;" src="assets/close.png" alt=""></td>
-                <td><img style="width: 20px;" src="assets/check.png" alt=""></td>
-              </tr>
-            </tbody>
-          </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID Kategori</th>
+            <th scope="col">ID Mobil</th>
+            <th scope="col">Tipe Mobil</th>
+            <th scope="col">Brand Mobil</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($type_index as $type)
+          <tr>
+            <td>{{ $type->id_kategori }}</td>
+            <td>{{ $type->id_mobil }}</td>
+            <td>{{ $type->tipe_mobil }}</td>
+            <td>{{ $type->brand_mobil }}</td>
+            <td><img style="width: 20px;" src="assets/close.png" alt=""></td>
+            <td><img style="width: 20px;" src="assets/check.png" alt=""></td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
     </div>
     <footer>
         <div class="container-fluid fixed-bottom" style="background-color: rgb(96, 96, 96);">

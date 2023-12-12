@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class TypeController extends Controller
 {
+    public function index()
+    {
+        $type_index = Type::all();
+        return view('admin.type_index', compact('type_index'));
+    }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

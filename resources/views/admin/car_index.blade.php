@@ -17,8 +17,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link active" href="/admin">Home</a>
-            <a class="nav-link" href="/admin/car">Mobil</a>
+            <a class="nav-link" href="/admin">Home</a>
+            <a class="nav-link active" href="/admin/car">Mobil</a>
             <a class="nav-link" href="/admin/type">Kategori</a>
             <a class="nav-link" href="/admin">User</a>
           </div>
@@ -27,11 +27,36 @@
           <div class="user dropdown">
             <a href="index.html">
                 <button type="button" class="btn btn-outline-secondary">Logout</button>
-            </a> 
+            </a>
           </div>
         </div>
       </div>
     </nav>
+    <center>
+        <h1 style="margin-top: 100px;">List Mobil</h1>
+    </center>
+    <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID Mobil</th>
+                <th scope="col">Nama Mobil</th>
+                <th scope="col">Jumlah</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($car_index as $car)
+              <tr>
+                <td>{{ $car->id_mobil }}</td>
+                <td>{{ $car->nama_mobil }}</td>
+                <td>{{ $car->jumlah }}</td>
+                <td><img style="width: 20px;" src="assets/close.png" alt=""></td>
+                <td><img style="width: 20px;" src="assets/check.png" alt=""></td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+    </div>
     <footer>
         <div class="container-fluid fixed-bottom" style="background-color: rgb(96, 96, 96);">
           <div class="container text-center">
