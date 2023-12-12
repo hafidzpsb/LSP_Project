@@ -10,6 +10,7 @@ class Type extends Model
     use HasFactory;
 
     protected $fillable = [
+        'kode_mobil',
         'tipe_mobil',
         'brand_mobil',
     ];

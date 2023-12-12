@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_kategori');
             $table->unsignedBigInteger('id_mobil')->nullable();
             $table->foreign('id_mobil')->references('id_mobil')->on('cars');
+            $table->string('kode_mobil');
             $table->string('tipe_mobil');
             $table->string('brand_mobil');
             $table->timestamps();
