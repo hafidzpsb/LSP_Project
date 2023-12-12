@@ -22,33 +22,22 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create();
         $user = [
             [
-                'username'=>'Admin',
+                'name'=>'Admin',
                 'email'=>'admin@admin.com',
-                'isAdmin'=>true,
-                'password'=> bcrypt('123'),
+                'level'=>'0',
+                'password'=> bcrypt('123123123'),
             ],[
-                'username'=>'User',
+                'name'=>'User',
                 'email'=>'user@user.com',
-                'isAdmin'=>false,
-                'password'=> bcrypt('123'),
+                'level'=>'1',
+                'password'=> bcrypt('123123123'),
             ]
         ];
         foreach ($user as $key => $user)
         {
             User::create($user);
         }
-        $id_user = User::pluck('id_user');
-        foreach ($id_user as $id)
-        {
-            Profile::create([
-                'id_user'=> $id,
-                'nama_depan'=> $faker -> firstName,
-                'nama_belakang'=> $faker -> lastName,
-                'jenis_kelamin'=> $faker -> randomElement(['pria','wanita']),
-                'tanggal_lahir'=> $faker -> dateTimeBetween('-50 years', '-20 years'),
-                'alamat'=> $faker -> city(),
-            ]);
-        };
+
         $car = [
             [
                 'nama_mobil'=>'Toyota Kijang Innova',

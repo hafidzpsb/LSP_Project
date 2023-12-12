@@ -20,7 +20,7 @@ class AdminMiddleware
             if(Auth::user()->level == 0){
                 return $next($request);
             }else{
-                return redirect('/home');
+                return redirect('/admin');
             }
         }else{
             return redirect('/login');

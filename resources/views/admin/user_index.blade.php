@@ -49,10 +49,10 @@
             <tbody>
               @foreach ($user_index as $user)
               <tr>
-                <td>{{ $user->id_user }}</td>
-                <td>{{ $user->username }}</td>
+                <td>{{ $user->id }}</td>
+                <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <?php if ($user -> isAdmin == 1)
+                <?php if ($user -> level == 0)
                 { ?>
                   <td> Admin </td>
                 <?php } else { ?>

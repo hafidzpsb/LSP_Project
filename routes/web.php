@@ -16,11 +16,18 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
-    return view('index');
+    return view('user/index');
 });
-Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
+Route::prefix('user')->middleware('auth','isUser')->group(function(){
+
+
+});
+Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
     Route::get('/', function () {
         return view('admin/index');
     });
@@ -38,11 +45,3 @@ Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
 
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
 });
-Route::prefix('user')->group(function () { // routing uuntuk user tipe non admin
-    Route::get('/', function () {
-        return view('user/index');
-    });
-});
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

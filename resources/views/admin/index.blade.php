@@ -27,7 +27,7 @@
           <div class="user dropdown">
             <a href="index.html">
                 <button type="button" class="btn btn-outline-secondary">Logout</button>
-            </a> 
+            </a>
           </div>
         </div>
       </div>

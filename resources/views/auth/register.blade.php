@@ -63,7 +63,7 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <input id="level" type="text" class="form-control @error('level') is-invalid @enderror" name="level" value="2" autocomplete="level" hidden>
+                                <input id="level" type="text" class="form-control @error('level') is-invalid @enderror" name="level" value="1" autocomplete="level" hidden>
 
                                 @error('level')
                                     <span class="invalid-feedback" role="alert">
