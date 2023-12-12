@@ -18,9 +18,9 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="/admin">Home</a>
-            <a class="nav-link active" href="/admin/car">Mobil</a>
+            <a class="nav-link" href="/admin/car">Mobil</a>
             <a class="nav-link" href="/admin/type">Kategori</a>
-            <a class="nav-link" href="/admin/user">User</a>
+            <a class="nav-link active" href="/admin/user">User</a>
           </div>
         </div>
         <div style="width: 300px;" class="container text-end">

@@ -19,8 +19,8 @@
           <div class="navbar-nav">
             <a class="nav-link" href="/admin">Home</a>
             <a class="nav-link" href="/admin/car">Mobil</a>
-            <a class="nav-link" href="/admin/type">Kategori</a>
-            <a class="nav-link active" href="/admin/user">User</a>
+            <a class="nav-link active" href="/admin/type">Kategori</a>
+            <a class="nav-link" href="/admin/user">User</a>
           </div>
         </div>
         <div style="width: 300px;" class="container text-end">
@@ -33,7 +33,7 @@
       </div>
     </nav>
     <center>
-        <h1 style="margin: 50px;"><u>Kategori Mobil<u></h1>
+        <h1 style="margin: 50px;"><u>Kategori Mobil</u></h1>
     </center>
     <div class="container">
       <table class="table">
@@ -61,6 +61,7 @@
           @endforeach
         </tbody>
       </table>
+      <center><button style="margin-bottom: 50px;" type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#modalstore">Tambah +</button></center>
     </div>
     <footer>
         <div class="container-fluid" style="background-color: rgb(96, 96, 96);">

@@ -33,62 +33,33 @@
       </div>
     </nav>
     <center>
-        <h1 style="margin: 50px;"><u>List Mobil</u></h1>
+        <h1 style="margin: 50px;"><u>Edit Data</u></h1>
     </center>
     <div class="container">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID Mobil</th>
-                <th scope="col">Nama Mobil</th>
-                <th scope="col">Jumlah</th>
-                <th colspan="2" scope="colgroup"><center>Aksi</center></th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($car_index as $car)
-              <tr>
-                <td>{{ $car->id_mobil }}</td>
-                <td>{{ $car->nama_mobil }}</td>
-                <td>{{ $car->jumlah }}</td>
-                <td width="100px" center><center><a href="/admin/car/edit/{{ $car->id_mobil }}" class="btn btn-warning mb-3 mt-3 w-100">Ubah</a></center></td>
-                <td width="100px" center><center><a href="/admin/car/delete/{{ $car->id_mobil }}" class="btn btn-danger mb-3 mt-3 w-100">Hapus</a></center></td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-          <center><button style="margin-bottom: 50px;" type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#modalstore">Tambah +</button></center>
-    </div>
-    <!-- Modal store data-->
-    <div class="modal fade" id="modalstore" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form action="/admin/car" method="POST" enctype="multipart/form-data">
+        <form action="/admin/car/update/{{ $car_edit->id_mobil}}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="nama_mobil" class="form-label">Nama Mobil</label>
-                <input type="text" class="form-control" id="nama_mobil" name="nama_mobil">
-              </div>
-              <div class="mb-3">
-                <label for="jumlah" class="form-label">Jumlah</label>
-                <input type="number" class="form-control" id="jumlah" name="jumlah">
-              </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput">Nama Mobil</label>
+                <input type="text" class="form-control" name="nama_mobil" id="nama_mobil" value="{{ $car_edit->nama_mobil }}">
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-warning">Tambah</button>
+            <div class="mb-3">
+                <label for="formGroupExampleInput2">Jumlah</label>
+                <input type="number" class="form-control" name="jumlah" id="jumlah" value="{{ $car_edit->jumlah }}">
             </div>
-          </form>
-        </div>
-      </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <center><a href="/admin/car" class="btn btn-danger">Cancel</a></center>
+                    </div>
+                    <div class="col-6">
+                        <center><button type="submit" class="btn btn-warning">Ubah</button></center>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <footer>
-      <div class="container-fluid" style="background-color: rgb(96, 96, 96);">
+      <div class="container-fluid fixed-bottom" style="background-color: rgb(96, 96, 96);">
         <div class="container text-center">
           <!-- Stack the columns on mobile by making one full-width and the other half-width -->
           <div class="row">

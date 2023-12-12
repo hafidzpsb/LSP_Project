@@ -19,19 +19,42 @@ class CarController extends Controller
             'nama_mobil' => 'required|string',
             'jumlah' => 'required|integer',
         ]);
+        if ($validator->fails())
+        {
+            return redirect('/admin/car');
+        }
         $car_store = Car::create($request->all());
-        return $car_store;
+        return redirect('/admin/car');
+    }
+    public function edit($id_mobil)
+    {
+        $car_edit = Car::find($id_mobil);
+        return view('admin.car_edit',  compact('car_edit'));
     }
     public function update(Request $request, $id_mobil)
     {
         $car_update = Car::find($id_mobil);
-        $car_update -> update($request->all());
-        return $car_update;
+        if($car_update)
+        {
+            $validator = Validator::make($request->all(), [
+                'nama_mobil' => 'required|string',
+                'jumlah' => 'required|integer',
+            ]);
+            if ($validator->fails())
+            {
+                return redirect('/admin/car');
+            }
+            $car_update -> update($request->all());
+        }
+        return redirect('/admin/car');
     }
-    public function delete(Request $request, $id_mobil)
+    public function delete($id_mobil)
     {
         $car_delete = Car::find($id_mobil);
-        $car_delete -> delete();
-        return 200;
+        if($car_delete)
+        {
+            $car_delete -> delete();   
+        }
+        return redirect('/admin/car');
     }
 }

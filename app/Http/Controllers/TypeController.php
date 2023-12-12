@@ -16,23 +16,49 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'id_mobil' => 'required|integer',
             'kode_mobil' => 'required|string',
             'tipe_mobil' => 'required|string',
             'brand_mobil' => 'required|string',
         ]);
+        if ($validator->fails())
+        {
+            return redirect('/admin/type');
+        }
         $type_store = Type::create($request->all());
-        return $type_store;
+        return redirect('/admin/type');
+    }
+    public function edit($id_kategori)
+    {
+        $type_edit = Type::find($id_kategori);
+        return view('admin.type_edit',  compact('type_edit'));
     }
     public function update(Request $request, $id_kategori)
     {
         $type_update = Type::find($id_kategori);
-        $type_update -> update($request->all());
-        return $type_update;
+        if($type_update)
+        {
+            $validator = Validator::make($request->all(), [
+                'id_mobil' => 'required|integer',
+                'kode_mobil' => 'required|string',
+                'tipe_mobil' => 'required|string',
+                'brand_mobil' => 'required|string',
+            ]);
+            if ($validator->fails())
+            {
+                return redirect('/admin/type');
+            }
+            $type_update -> update($request->all());
+        }
+        return redirect('/admin/type');
     }
-    public function delete(Request $request, $id_kategori)
+    public function delete($id_kategori)
     {
         $type_delete = Type::find($id_kategori);
-        $type_delete -> delete();
-        return 200;
+        if($type_delete)
+        {
+            $type_delete -> delete();   
+        }
+        return redirect('/admin/type');
     }
 }
