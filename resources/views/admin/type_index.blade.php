@@ -40,7 +40,7 @@
         <thead>
           <tr>
             <th scope="col">ID Kategori</th>
-            <th scope="col">ID Mobil</th>
+            <th scope="col">Nama Mobil</th>
             <th scope="col">Kode Mobil</th>
             <th scope="col">Tipe Mobil</th>
             <th scope="col">Brand Mobil</th>
@@ -51,7 +51,9 @@
           @foreach ($type_index as $type)
           <tr>
             <td>{{ $type->id_kategori }}</td>
-            <td>{{ $type->id_mobil }}</td>
+            @if ($type->car)
+            <td>{{ $type->car->nama_mobil }}</td>
+            @endif
             <td>{{ $type->kode_mobil }}</td>
             <td>{{ $type->tipe_mobil }}</td>
             <td>{{ $type->brand_mobil }}</td>

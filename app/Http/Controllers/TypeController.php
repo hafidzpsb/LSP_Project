@@ -10,7 +10,7 @@ class TypeController extends Controller
 {
     public function index()
     {
-        $type_index = Type::all();
+        $type_index = Type::with('car')->get();
         return view('admin.type_index', compact('type_index'));
     }
     public function store(Request $request)
