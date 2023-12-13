@@ -35,21 +35,21 @@
     <center>
         <h1 style="margin: 50px;"><u>Edit Data</u></h1>
     </center>
-    <div class="container">
-        <form action="/admin/car/update/{{ $car_edit->id_mobil}}" method="POST" enctype="multipart/form-data">
+    <div class="container" style="margin: 50px;">
+        <form action="/admin/type/update/{{ $car_edit->id_mobil}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="formGroupExampleInput">Nama Mobil</label>
+                <label for="nama_mobil">Nama Mobil</label>
                 <input type="text" class="form-control" name="nama_mobil" id="nama_mobil" value="{{ $car_edit->nama_mobil }}">
             </div>
             <div class="mb-3">
-                <label for="formGroupExampleInput2">Jumlah</label>
+                <label for="jumlah">Jumlah</label>
                 <input type="number" class="form-control" name="jumlah" id="jumlah" value="{{ $car_edit->jumlah }}">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <center><a href="/admin/car" class="btn btn-danger">Cancel</a></center>
+                        <center><a href="/admin/type" class="btn btn-danger">Cancel</a></center>
                     </div>
                     <div class="col-6">
                         <center><button type="submit" class="btn btn-warning">Ubah</button></center>
@@ -59,7 +59,7 @@
         </form>
     </div>
     <footer>
-      <div class="container-fluid fixed-bottom" style="background-color: rgb(96, 96, 96);">
+      <div class="container-fluid" style="background-color: rgb(96, 96, 96);">
         <div class="container text-center">
           <!-- Stack the columns on mobile by making one full-width and the other half-width -->
           <div class="row">

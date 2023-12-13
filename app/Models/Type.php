@@ -11,6 +11,7 @@ class Type extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_mobil',
         'kode_mobil',
         'tipe_mobil',
         'brand_mobil',

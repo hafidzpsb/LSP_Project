@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id('id_kategori');
-            $table->unsignedBigInteger('id_mobil')->nullable();
-            $table->foreign('id_mobil')->references('id_mobil')->on('cars');
+            $table->unsignedBigInteger('id_mobil');
+            $table->foreign('id_mobil')->references('id_mobil')->on('cars')->onUpdate('cascade');
             $table->string('kode_mobil');
             $table->string('tipe_mobil');
             $table->string('brand_mobil');

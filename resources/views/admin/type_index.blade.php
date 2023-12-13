@@ -40,6 +40,7 @@
         <thead>
           <tr>
             <th scope="col">ID Kategori</th>
+            <th scope="col">ID Mobil</th>
             <th scope="col">Nama Mobil</th>
             <th scope="col">Kode Mobil</th>
             <th scope="col">Tipe Mobil</th>
@@ -51,19 +52,61 @@
           @foreach ($type_index as $type)
           <tr>
             <td>{{ $type->id_kategori }}</td>
+            <td>{{ $type->id_mobil }}</td>
             @if ($type->car)
             <td>{{ $type->car->nama_mobil }}</td>
             @endif
             <td>{{ $type->kode_mobil }}</td>
             <td>{{ $type->tipe_mobil }}</td>
             <td>{{ $type->brand_mobil }}</td>
-            <td width="100px" center><center><a name="update" id="update" href="" class="btn btn-warning mb-3 mt-3 w-100">Edit</a></center></td>
-            <td width="100px" center><center><a name="delete" id="delete" href="" class="btn btn-danger mb-3 mt-3 w-100">Delete</a></center></td>
+            <td width="100px" center><center><a name="update" id="update" href="/admin/type/edit/{{ $type->id_kategori }}" class="btn btn-warning mb-3 mt-3 w-100">Edit</a></center></td>
+            <td width="100px" center><center><a name="delete" id="delete" href="/admin/type/delete/{{ $type->id_kategori }}" class="btn btn-danger mb-3 mt-3 w-100">Delete</a></center></td>
           </tr>
           @endforeach
         </tbody>
       </table>
       <center><button style="margin-bottom: 50px;" type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#modalstore">Tambah +</button></center>
+    </div>
+    <!-- Modal store data-->
+    <div class="modal fade" id="modalstore" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Kategori</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="/admin/type" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-body">
+              <div class="input-group mb-3">
+                <select class="custom-select form-control" name="id_mobil" id="id_mobil">
+                  @foreach ($type_index->unique('id_mobil') as $type)
+                    @if ($type->car)
+                      <option value="{{ $type->id_mobil }}">{{ $type->car->nama_mobil }}</option>
+                    @endif
+                  @endforeach
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="kode_mobil" class="form-label">Kode Mobil</label>
+                <input type="text" class="form-control" id="kode_mobil" name="kode_mobil">
+              </div>
+              <div class="mb-3">
+                <label for="tipe_mobil" class="form-label">Tipe Mobil</label>
+                <input type="text" class="form-control" id="tipe_mobil" name="tipe_mobil">
+              </div>
+              <div class="mb-3">
+                <label for="brand_mobil" class="form-label">Brand Mobil</label>
+                <input type="text" class="form-control" id="brand_mobil" name="brand_mobil">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-warning">Tambah</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
     <footer>
         <div class="container-fluid" style="background-color: rgb(96, 96, 96);">
@@ -92,4 +135,6 @@
                 <h6 class="text-white">Copyright 2023</h6>
               </div>
       </footer>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>
