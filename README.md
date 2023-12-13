@@ -10,12 +10,12 @@ Nama Project : Telkom Travel
 
 ## **List Fitur**
 
-# Anggota
+### Anggota
 - Menyewa kendaraan untuk beberapa hari
 - Mellhat riwayat penyewaan kendaraan
 - Menghubungi admin untuk membatalkan penyewaan
 
-# Admin
+### Admin
 - Menambah, mengupdate, menghapus data mobil
 - Menambah, mengupdate, menghapus kategori mobil
 - Menambah, mengupdate, menghapus user anggota
