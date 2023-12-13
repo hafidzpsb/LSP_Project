@@ -4,8 +4,8 @@
 
 Nama Kelompok : Teltrev <br>
 Nama Team : <br>
-    - Achmad Rozan Chaidir
-    - Muhammad Hafidz Alkhair Pasaribu
+    - Achmad Rozan Chaidir <br>
+    - Muhammad Hafidz Alkhair Pasaribu <br>
 Nama Project : Telkom Travel
 
 ## **List Fitur**
