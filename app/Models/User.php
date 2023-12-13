@@ -14,15 +14,19 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'username',
+        'name',
+        'fullname',
+        'phone_number',
         'email',
         'password',
+        'level',
     ];
 
-    protected $primaryKey = 'id_user';
-
-    public function profile(): HasOne
-    {
-        return $this->hasOne(Profile::class);
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

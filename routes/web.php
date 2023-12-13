@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,18 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
-    return view('index');
+    return view('user/index');
 });
-Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
+Route::prefix('user')->middleware('auth','isUser')->group(function(){
+
+
+});
+Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
     Route::get('/', function () {
         return view('admin/index');
     });
@@ -40,9 +48,4 @@ Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
     Route::get('/user/edit/{id_kategori}', [TypeController::class, 'edit'])->name('type.edit');
     Route::post('/user/update/{id_kategori}', [TypeController::class, 'update'])->name('type.update');
     Route::get('/user/delete/{id_kategori}', [TypeController::class, 'delete'])->name('type.delete');
-});
-Route::prefix('user')->group(function () { // routing uuntuk user tipe non admin
-    Route::get('/', function () {
-        return view('user/index');
-    });
 });

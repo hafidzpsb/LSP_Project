@@ -17,11 +17,4 @@ class Profile extends Model
         'tanggal_lahir',
         'alamat',
     ];
-
-    protected $primaryKey = 'id_profile';
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'id_user', 'id_user');
-    }
 }
