@@ -34,8 +34,12 @@ Route::prefix('admin')->group(function () { // routing uuntuk user tipe admin
     Route::get('/type/edit/{id_kategori}', [TypeController::class, 'edit'])->name('type.edit');
     Route::post('/type/update/{id_kategori}', [TypeController::class, 'update'])->name('type.update');
     Route::get('/type/delete/{id_kategori}', [TypeController::class, 'delete'])->name('type.delete');
-    
+
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::post('/user', [TypeController::class, 'store'])->name('type.store');
+    Route::get('/user/edit/{id_kategori}', [TypeController::class, 'edit'])->name('type.edit');
+    Route::post('/user/update/{id_kategori}', [TypeController::class, 'update'])->name('type.update');
+    Route::get('/user/delete/{id_kategori}', [TypeController::class, 'delete'])->name('type.delete');
 });
 Route::prefix('user')->group(function () { // routing uuntuk user tipe non admin
     Route::get('/', function () {
