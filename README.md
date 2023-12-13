@@ -24,7 +24,9 @@ Nama Project : Telkom Travel
 
 ## **Skema Database**
 
-Capture
+## **Capture**
+![Screenshot from 2023-12-13 09-53-48](https://github.com/hafidzpsb/LSP_Project/assets/60591001/5f920b9a-e86e-4613-9e72-aad88341c20d)
+
 
 ## **Pembagian Tugas**
 
