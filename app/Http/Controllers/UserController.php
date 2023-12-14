@@ -12,7 +12,8 @@ class UserController extends Controller
     public function index()
     {
         $user_index = User::all();
-        return view('admin.user_index', compact('user_index'));
+        // return view('admin.user_index', compact('user_index'));
+        return view('user.services');
     }
     public function store(Request $request)
     {
@@ -36,5 +37,11 @@ class UserController extends Controller
         $user_delete = User::find($id_user);
         $user_delete -> delete();
         return 200;
+    }
+    function services() {
+        return view('user.services');
+    }
+    function profile() {
+        return view('user.profile');
     }
 }
