@@ -14,6 +14,7 @@ class Car extends Model
     protected $fillable = [
         'kode_mobil',
         'nama_mobil',
+        'use_for',
         'harga_mobil',
         'foto',
         'id_kategori',

@@ -66,18 +66,18 @@
             Home
           </a>
         </li>
-        <!-- View Stock menu -->
-        <li class="nav-item">
-            <a class="nav-link" href="#" data-menu="view-add-route">
-              Add Travel Route
-            </a>
-          </li>
-        <!-- Add Stock menu -->
+
         <li class="nav-item">
           <a class="nav-link" href="#" data-menu="add-add-car">
             Add Car
           </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-menu="view-add-route">
+              Add Travel Route
+            </a>
+          </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#" data-menu="userMNG">
             User Management
@@ -160,27 +160,31 @@ dasd
         <div class="container">
             <h1>Add Car</h1>
 
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">ID Mobil</th>
-                        <th scope="col">Nama Mobil</th>
-                        <th scope="col">Jumlah</th>
-                        <th colspan="2" scope="colgroup"><center>Aksi</center></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     @foreach ($carData as $car)
-                      <tr>
-                        <td>{{ $car->id_mobil }}</td>
-                        <td>{{ $car->nama_mobil }}</td>
-                        <td>{{ $car->jumlah }}</td>
-                        <td width="100px" center><center><a href="/admin/car/edit/{{ $car->id_mobil }}" class="btn btn-warning mb-3 mt-3 w-100">Ubah</a></center></td>
-                        <td width="100px" center><center><a href="/admin/car/delete/{{ $car->id_mobil }}" class="btn btn-danger mb-3 mt-3 w-100">Hapus</a></center></td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID Mobil</th>
+                    <th scope="col">Nama Mobil</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Use For</th>
+                    <th scope="col">Jumlah</th>
+                    <th colspan="2" scope="colgroup"><center>Aksi</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($car_index as $car)
+                  <tr>
+                    <td>{{ $car->id_mobil }}</td>
+                    <td>{{ $car->nama_mobil }}</td>
+                    <td>{{ $car->type }}</td>
+                    <td>{{ $car->use_for }}</td>
+                    <td>{{ $car->jumlah }}</td>
+                    <td width="100px" center><center><a href="/admin/car/edit/{{ $car->id_mobil }}" class="btn btn-warning mb-3 mt-3 w-100">Ubah</a></center></td>
+                    <td width="100px" center><center><a href="/admin/car/delete/{{ $car->id_mobil }}" class="btn btn-danger mb-3 mt-3 w-100">Hapus</a></center></td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
                   <center><button style="margin-bottom: 50px;" type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#modalstore">Tambah +</button></center>
             </div><!-- Modal store data-->
             <div class="modal fade" id="modalstore" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -196,6 +200,18 @@ dasd
                       <div class="mb-3">
                         <label for="nama_mobil" class="form-label">Nama Mobil</label>
                         <input type="text" class="form-control" id="nama_mobil" name="nama_mobil">
+                      </div>
+                      <div class="mb-3">
+                        <label for="nama_mobil" class="form-label">Tipe Mobil</label>
+                        <select class="form-select" name="type" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="mpv">MPV</option>
+                            <option value="suv">SUV</option>
+                            <option value="crossover">Crossover</option>
+                            <option value="hatchback">Hatchback</option>
+                            <option value="sedan">sedan</option>
+                            <option value="van">Van</option>
+                          </select>
                       </div>
                       <div class="mb-3">
                         <label for="jumlah" class="form-label">Jumlah</label>
@@ -217,7 +233,49 @@ dasd
     <div id="userMNG-content" style="display: none;">
         <div class="container">
             <h1>User Management</h1>
-            hdakhdk
+            <a href="admin/adduser">
+                <button class="btn btn-danger">Add User</button>
+            </a>
+            <table class="table mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">ID User</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tipe</th>
+                    <th colspan="2" scope="colgroup"><center>Aksi</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($user_index as $user)
+                  <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <?php if ($user -> level == 0)
+                    { ?>
+                      <td> Admin </td>
+                    <?php } else { ?>
+                      <td> User</td>
+                    <?php } ?>
+                    <td>
+                        <form action="/admin/updateuser/{{ $user->id }}" method="post">
+                        @csrf
+                        @method('post')
+                        <input class="btn btn-warning" type="submit" value="Edit Data">
+                    </form>
+                    <form action="/admin/deleteuser/{{ $user->id }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
         </div>
     </div>
 

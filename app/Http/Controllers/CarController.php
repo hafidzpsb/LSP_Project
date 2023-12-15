@@ -61,7 +61,7 @@ class CarController extends Controller
         $car_delete = Car::find($id_mobil);
         if($car_delete)
         {
-            $car_delete -> delete();   
+            $car_delete -> delete();
         }
         return redirect('/admin/car');
     }

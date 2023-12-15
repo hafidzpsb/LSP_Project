@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id_mobil');
             $table->string('kode_mobil');
             $table->string('nama_mobil');
+            $table->string('use_for')->nullable();
             $table->bigInteger('harga_mobil');
             $table->string('foto')->nullable();
             $table->timestamps();
