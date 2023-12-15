@@ -13,8 +13,8 @@ class AdminController extends Controller
     }
     public function getCar()
     {
-        $carData = Car::all();
-        return view('admin.index', compact('carData'));
+        $car_index = Car::with('type')->get();
+        return view('admin.index', compact('car_index'));
     }
     function getUser() {
         $userData = User::all();

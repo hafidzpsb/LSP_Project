@@ -37,23 +37,27 @@ class DatabaseSeeder extends Seeder
         {
             User::create($user);
         }
-
         $car = [
             [
+                'kode_mobil'=>'TK-1',
                 'nama_mobil'=>'Toyota Kijang Innova',
-                'jumlah'=> 10,
+                'harga_mobil'=> 1000000,
             ],[
+                'kode_mobil'=>'TA-1',
                 'nama_mobil'=>'Toyota Agya',
-                'jumlah'=> 8,
+                'harga_mobil'=> 1000000,
             ],[
+                'kode_mobil'=>'TR-1',
                 'nama_mobil'=>'Toyota Raize',
-                'jumlah'=> 6,
+                'harga_mobil'=> 1000000,
             ],[
+                'kode_mobil'=>'HB-1',
                 'nama_mobil'=>'Honda Brio',
-                'jumlah'=> 4,
+                'harga_mobil'=> 1000000,
             ],[
+                'kode_mobil'=>'HM-1',
                 'nama_mobil'=>'Honda Mobilio',
-                'jumlah'=> 2,
+                'harga_mobil'=> 1000000,
             ]
         ];
         foreach ($car as $key => $car)
@@ -62,45 +66,17 @@ class DatabaseSeeder extends Seeder
         }
         $type = [
             [
-                'id_mobil'=> 1,
-                'kode_mobil' => 'TK-1',
-                'tipe_mobil'=> 'Minivan',
-                'brand_mobil'=>'Toyota',
+                'nama_kategori'=> 'Minivan',
             ],[
-                'id_mobil'=> 1,
-                'kode_mobil' => 'TK-2',
-                'tipe_mobil'=> 'Minivan',
-                'brand_mobil'=>'Toyota',
+                'nama_kategori'=>'MPV',
             ],[
-                'id_mobil'=> 2,
-                'kode_mobil' => 'TA-1',
-                'tipe_mobil'=> 'Hatchback',
-                'brand_mobil'=>'Toyota',
+                'nama_kategori'=> 'Hatchback',
             ],[
-                'id_mobil'=> 2,
-                'kode_mobil' => 'TA-2',
-                'tipe_mobil'=> 'Hatchback',
-                'brand_mobil'=>'Toyota',
+                'nama_kategori'=> 'SUV',
             ],[
-                'id_mobil'=> 3,
-                'kode_mobil' => 'TR-1',
-                'tipe_mobil'=> 'SUV',
-                'brand_mobil'=>'Toyota',
+                'nama_kategori'=>'Honda',
             ],[
-                'id_mobil'=> 3,
-                'kode_mobil' => 'TR-2',
-                'tipe_mobil'=> 'SUV',
-                'brand_mobil'=>'Toyota',
-            ],[
-                'id_mobil'=> 4,
-                'kode_mobil' => 'HB-1',
-                'tipe_mobil'=> 'Hatchback',
-                'brand_mobil'=>'Honda',
-            ],[
-                'id_mobil'=> 5,
-                'kode_mobil' => 'HM-1',
-                'tipe_mobil'=> 'MPV',
-                'brand_mobil'=>'Honda',
+                'nama_kategori'=> 'Toyota',
             ]
         ];
         foreach ($type as $key => $type)

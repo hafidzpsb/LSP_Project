@@ -10,16 +10,17 @@ class TypeController extends Controller
 {
     public function index()
     {
-        $type_index = Type::with('car')->orderBy('id_mobil')->get();
+        $type_index = Type::all();
         return view('admin.type_index', compact('type_index'));
+    }
+    public function create()
+    {
+        return view('admin.type_create');
     }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_mobil' => 'required',
-            'kode_mobil' => 'required|string',
-            'tipe_mobil' => 'required|string',
-            'brand_mobil' => 'required|string',
+            'nama_kategori' => 'required|string',
         ]);
         if ($validator->fails())
         {
@@ -30,7 +31,7 @@ class TypeController extends Controller
     }
     public function edit($id_kategori)
     {
-        $type_edit = Type::with('car')->find($id_kategori);
+        $type_edit = Type::find($id_kategori);
         return view('admin.type_edit',  compact('type_edit'));
     }
     public function update(Request $request, $id_kategori)
@@ -39,9 +40,7 @@ class TypeController extends Controller
         if($type_update)
         {
             $validator = Validator::make($request->all(), [
-                'kode_mobil' => 'required|string',
-                'tipe_mobil' => 'required|string',
-                'brand_mobil' => 'required|string',
+                'nama_kategori' => 'required|string',
             ]);
             if ($validator->fails())
             {
