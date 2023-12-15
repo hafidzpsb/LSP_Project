@@ -11,12 +11,14 @@ class CarController extends Controller
     public function index()
     {
         $car_index = Car::all();
-        return view('admin.car_index', compact('car_index'));
+        return view('admin.index', compact('car_index'));
     }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nama_mobil' => 'required|string',
+            'type' => 'required|string',
+            'use_for' => 'required|string',
             'jumlah' => 'required|integer',
         ]);
         if ($validator->fails())

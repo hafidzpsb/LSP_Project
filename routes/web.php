@@ -49,12 +49,12 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
     Route::delete('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
     Route::post('/updateuser/{id}', [AdminController::class, 'updateuser']);
     Route::post('updateuser/saveupdateuser/{id}', [AdminController::class, 'saveupdate']);
-
     Route::get('/car', [CarController::class, 'index']);
+    Route::get('/car/delete/{id_mobil}', [CarController::class, 'delete']);
+    Route::post('/car/update/{id_mobil}', [CarController::class, 'update']);
+
     Route::post('/car', [CarController::class, 'store'])->name('car.store');
     Route::get('/car/edit/{id_mobil}', [CarController::class, 'edit'])->name('car.edit');
-    Route::post('/car/update/{id_mobil}', [CarController::class, 'update'])->name('car.update');
-    Route::get('/car/delete/{id_mobil}', [CarController::class, 'delete'])->name('car.delete');
 
     Route::get('/type', [TypeController::class, 'index'])->name('type.index');
     Route::post('/type', [TypeController::class, 'store'])->name('type.store');

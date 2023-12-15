@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id('id_mobil');
             $table->string('nama_mobil');
+            $table->string('type');
+            $table->string('use_for');
             $table->string('jumlah');
             $table->timestamps();
         });

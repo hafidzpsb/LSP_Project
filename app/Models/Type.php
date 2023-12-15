@@ -17,10 +17,4 @@ class Type extends Model
         'brand_mobil',
     ];
 
-    protected $primaryKey = 'id_kategori';
-
-    public function car(): BelongsTo
-    {
-        return $this->BelongsTo(Car::class, 'id_mobil', 'id_mobil');
-    }
 }

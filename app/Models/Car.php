@@ -12,13 +12,8 @@ class Car extends Model
 
     protected $fillable = [
         'nama_mobil',
+        'type',
+        'use_for',
         'jumlah',
     ];
-
-    protected $primaryKey = 'id_mobil';
-
-    public function type(): HasOne
-    {
-        return $this->hasMany(Type::class);
-    }
 }
