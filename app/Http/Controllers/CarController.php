@@ -20,25 +20,6 @@ class CarController extends Controller
         return view('admin.car_create', compact('car_create'));
     }
 
-    public function addcar(Request $request) {
-        // dd($request);
-        $validator = Validator::make($request->all(), [
-            'nama_mobil' => 'required|string',
-            'type' => 'required|string',
-            'checkbox_values' => 'required|array',
-            'jumlah' => 'required|integer',
-        ]);
-
-        $car = new Car();
-        $car->nama_mobil = $request->input('nama_mobil');
-        $car->type = $request->input('type');
-        $car->use_for = implode(',', $request->input('checkbox_values'));
-        $car->jumlah = $request->input('jumlah');
-
-        $car->save();
-        return redirect('/admin');
-    }
-
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -48,7 +29,7 @@ class CarController extends Controller
         ]);
         if ($validator->fails())
         {
-            return redirect('/admin/car');
+            return redirect('/admin');
         }
         $data = $request->all();
         $foto = fake()->uuid() . '.' . $data['foto']->extension();
@@ -60,7 +41,7 @@ class CarController extends Controller
         $kategori = $request->input('kategori_mobil');
         $car_store->type()->attach($kategori);
 
-        return redirect('/admin/car');
+        return redirect('/admin');
     }
     public function edit($id_mobil)
     {
@@ -76,9 +57,9 @@ class CarController extends Controller
         }
         return redirect('/admin/car');
     }
-    public function delete($id)
+    public function delete($id_mobil)
     {
-        $data =Car::find($id);
+        $data = Car::find($id_mobil);
         $data->delete();
         return redirect('/admin');
     }

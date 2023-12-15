@@ -6,13 +6,13 @@
     <title>Telkom Travel</title>
     <link rel="icon" href="assets/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
       <div class="container-fluid">
           <a href="#">
-              <img src="assets/Telkom Travel.png" style="width: 100px; margin: 10px">
+              <img src="../assets/Telkom Travel.png" style="width: 100px; margin: 10px">
           </a>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -65,74 +65,56 @@
       </div>
     </nav>
 <!-- Modal -->
-<div class="modal fade " id="modallogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="  modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div>
-            <p>don't have an account yet? <a href="">CLick Here</a></p>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <a href="user_index.html">
-          <button type="button" class="btn btn-danger">Login</button>
-        </a>
+<section class="page-section bg-primary text-dark mb-0" id="ticket">
+    <div class="container">
+      <h2 class="page-section-heading text-center text-dark">Buy Ticket</h2>
+      <div class="container" style="max-width: 800px;">
+        <div class="container">
+          <center>
+          <table class="table">
+            <thead>
+                <tr>
+                    <th>ID Pesanan</th>
+                    <th>Nama Mobil</th>
+                    <th>Foto</th>
+                    <th>Tanggal Sewa</th>
+                    <th>Tanggal Pengembalian</th>
+                    <th>Harga Sewa</th>
+                    <th>Nama Peminjam</th>
+                    <th>Status</th>
+                    <th colspan="2" scope="colgroup"><center>Aksi</center></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($riwayat as $carter)
+                <tr>
+                    <td>{{$carter->id_carter}}</td>
+                    <td>{{$carter->car->nama_mobil}}</td>
+                    <td>
+                    <img src="{{ $carter->car->foto }}" height="150px" width="300px" alt="No Image">
+                    </td>
+                    <td>{{$carter->tanggal_sewa}}</td>
+                    <td>{{$carter->tanggal_pengembalian}}</td>
+                    <td>{{$carter->car->harga_mobil}}</td>
+                    <td>{{$carter->car->use_for}}</td>
+                    <td>{{$carter->status}}</td>
+                    <form action="/user/pengembalian/{{ $carter->id_carter }}" method="POST">
+                        @csrf
+                        <td width="100px" center><center><button type="submit" class="btn btn-warning mb-3 mt-3 w-100" {{ $carter->status === 'menunggu' || $carter->status === 'dikembalikan'? 'disabled' : null}}>Konfirmasi Pengembalian</button></center></td>
+                    </form>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+          </center>
+          <!-- <center>
+            <h6>You must be logged in to be able to book your ticket</h6>
+            <button style="margin-bottom: 50px;" type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#modallogin">Login</button>
+          </center> -->
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="container text-center" style="margin-top: 100px;">
-    <h1 class="">Our Services</h1>
-    <section class="mb-5">
-        <h3 class="mt-3">Car Travel</h3>
-        <p>
-          Dengan layanan Car Travel kami, Anda dapat menikmati perjalanan yang nyaman dan aman ke destinasi pilihan Anda. Kendaraan kami dilengkapi dengan fasilitas yang modern dan sopir berpengalaman untuk memastikan perjalanan Anda berjalan lancar.
-        </p>
-        <p>
-          <strong>Keunggulan Car Travel:</strong>
-        </p>
-        <ul>
-          <li>Kenyamanan Utama: Kendaraan kami dirancang untuk memberikan kenyamanan tertinggi selama perjalanan.</li>
-          <li>Fleksibilitas Jadwal: Sesuaikan waktu perjalanan Anda sesuai kebutuhan, tanpa harus mengikuti jadwal transportasi umum.</li>
-          <li>Sopir Berpengalaman: Sopir kami terlatih dan berpengalaman, memastikan keamanan dan keamanan selama perjalanan.</li>
-        </ul>
-        <a href="user/booktravel">
-            <button style="margin-bottom: 50px;" type="button" class="btn btn-danger">Book Travel</button>
-          </a>
-      </section>
-      <section>
-        <h2>Car Charter</h2>
-        <p>
-          Layanan Car Charter kami memberikan fleksibilitas penuh kepada Anda. Anda dapat menyewa kendaraan kami untuk keperluan khusus, seperti perjalanan bisnis, wisata pribadi, atau acara khusus. Dengan Car Charter, Anda memiliki kendali penuh atas rute perjalanan dan jadwal, memberikan kebebasan dan kenyamanan tanpa batasan.
-        </p>
-        <p>
-          <strong>Keunggulan Car Charter:</strong>
-        </p>
-        <ul>
-          <li>Kendali Penuh: Tentukan sendiri rute perjalanan dan jadwal sesuai keinginan Anda.</li>
-          <li>Privasi dan Eksklusivitas: Nikmati perjalanan tanpa gangguan, dengan kendaraan eksklusif untuk keperluan Anda.</li>
-          <li>Pilihan Kendaraan: Pilih kendaraan sesuai dengan kebutuhan, mulai dari mobil mewah hingga van besar untuk kelompok besar.</li>
-        </ul>
-        <a href="user/bookcarter">
-            <button style="margin-bottom: 50px;" type="button" class="btn btn-danger">Book The Car</button>
-          </a>
-      </section>
-</div>
+  </section>
   <footer>
     <div class="container-fluid" style="background-color: rgb(96, 96, 96);">
       <div class="container text-center">
