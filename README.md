@@ -35,4 +35,4 @@ Admin dan User harus melakuukan registrasi dan login apabila ingin mengakses web
 
 ## **Demo**
 
-Link
+![Demo](https://drive.google.com/drive/folders/13OxN_6nVkJuU_RtVstsRwLbcN_xmrAg0?usp=drive_link)
