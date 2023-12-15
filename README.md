@@ -26,7 +26,7 @@ Admin dan User harus melakuukan registrasi dan login apabila ingin mengakses web
 
 ## **Skema Database**
 
-![Skeam Database](https://drive.google.com/file/d/1_48SuqheBPl3-Pg5MFvwFlQOYvQ1zvAA/view?usp=drive_link)
+https://drive.google.com/file/d/1_48SuqheBPl3-Pg5MFvwFlQOYvQ1zvAA/view?usp=drive_link
 
 ## **Pembagian Tugas**
 
@@ -35,4 +35,4 @@ Admin dan User harus melakuukan registrasi dan login apabila ingin mengakses web
 
 ## **Demo**
 
-![Demo](https://drive.google.com/drive/folders/13OxN_6nVkJuU_RtVstsRwLbcN_xmrAg0?usp=drive_link)
+https://drive.google.com/drive/folders/13OxN_6nVkJuU_RtVstsRwLbcN_xmrAg0?usp=drive_link
