@@ -194,7 +194,7 @@ dasd
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <form action="/admin/car" method="POST" enctype="multipart/form-data">
+                  <form action="/admin/addcar" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                       <div class="mb-3">
@@ -213,6 +213,17 @@ dasd
                             <option value="van">Van</option>
                           </select>
                       </div>
+
+                      <label for="use_for" class="form-label">Digunakan Untuk :</label>
+                      <br>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="checkbox_values[]" value="rental">
+                        <label class="form-check-label" for="inlineCheckbox1">Rental</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="checkbox_values[]" value="carter">
+                        <label class="form-check-label" for="inlineCheckbox2">Carter</label>
+                    </div>
                       <div class="mb-3">
                         <label for="jumlah" class="form-label">Jumlah</label>
                         <input type="number" class="form-control" id="jumlah" name="jumlah">
