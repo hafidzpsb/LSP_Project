@@ -108,43 +108,7 @@
     <div class="container mt-4">
         <div id="home-content" style="display: none;">
             <div class="container">
-                <h1>Product List</h1>
-                <form action="admin/find" method="get">
-                    @method('get')
-                        <input name="search" type="text" class="form-control-sm" placeholder="Search">
-                        <button type="submit" class="btn btn-primary">Find</button>
-                    </form>
 
-                <table class="table mt-3">
-                    <thead>
-                    <tr>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Stock</th>
-                        <th>Exp Date</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                    </tr>
-                    </thead>
-                <tbody>
-                    {{-- @foreach ($products as $value) --}}
-                  <tr>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>
-                     x
-                    </td>
-                  </tr>
-                  {{-- @endforeach --}}
-                </tbody>
-              </table>
             </div>
     </div>
 
