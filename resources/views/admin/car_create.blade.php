@@ -33,26 +33,42 @@
       </div>
     </nav>
     <center>
-        <h1 style="margin: 50px;"><u>Edit Data</u></h1>
+        <h1 style="margin: 50px;"><u>Tambah Mobil</u></h1>
     </center>
     <div class="container" style="margin: 50px;">
-        <form action="/admin/type/update/{{ $car_edit->id_mobil}}" method="POST" enctype="multipart/form-data">
+        <form action="/admin/car/store" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="nama_mobil">Nama Mobil</label>
-                <input type="text" class="form-control" name="nama_mobil" id="nama_mobil" value="{{ $car_edit->nama_mobil }}">
+                <label for="kode_mobil">Kode Mobil</label>
+                <input type="text" class="form-control" name="kode_mobil" id="kode_mobil">
             </div>
             <div class="mb-3">
-                <label for="jumlah">Jumlah</label>
-                <input type="number" class="form-control" name="jumlah" id="jumlah" value="{{ $car_edit->jumlah }}">
+                <label for="nama_mobil">Nama Mobil</label>
+                <input type="text" class="form-control" name="nama_mobil" id="nama_mobil">
+            </div>
+            <div class="mb-3">
+                <label for="harga_mobil">Harga Mobil</label>
+                <input type="number" class="form-control" name="harga_mobil" id="harga_mobil">
+            </div>
+            <div class="mb-3">
+                <label for="foto">Foto</label>
+                <input type="file" class="form-control" name="foto" id="foto">
+            </div>
+            <div class="input-group mb-3">
+                @foreach ($car_create as $type)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="kategori_mobil" name="kategori_mobil[]" value="{{ $type->id_kategori }}">
+                        <label class="form-check-label" for="kategori_mobil_{{ $type->id_kategori }}">{{ $type->nama_kategori }}</label>
+                    </div>
+                @endforeach
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <center><a href="/admin/type" class="btn btn-danger">Cancel</a></center>
+                        <center><a href="/admin/car" class="btn btn-danger">Cancel</a></center>
                     </div>
                     <div class="col-6">
-                        <center><button type="submit" class="btn btn-warning">Ubah</button></center>
+                        <center><button type="submit" class="btn btn-warning">Tambah</button></center>
                     </div>
                 </div>
             </div>

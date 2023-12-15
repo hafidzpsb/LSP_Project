@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,21 +11,37 @@ class CarController extends Controller
 {
     public function index()
     {
-        $car_index = Car::all();
+        $car_index = Car::with('type')->get();
         return view('admin.car_index', compact('car_index'));
     }
+    public function create()
+    {
+        $car_create = Type::all();
+        return view('admin.car_create', compact('car_create'));
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'kode_mobil' => 'required|string',
             'nama_mobil' => 'required|string',
-            'jumlah' => 'required|integer',
+            'harga_mobil' => 'required|string',
         ]);
         if ($validator->fails())
         {
-            return redirect('/admin/car');
+            return redirect('/admin');
         }
-        $car_store = Car::create($request->all());
-        return redirect('/admin/car');
+        $data = $request->all();
+        $foto = fake()->uuid() . '.' . $data['foto']->extension();
+        $request->file('foto')->move(public_path('/img/cars'), $foto);
+        $data['foto'] = "/img/cars/$foto";
+
+        $car_store = Car::create($data);
+
+        $kategori = $request->input('kategori_mobil');
+        $car_store->type()->attach($kategori);
+
+        return redirect('/admin');
     }
     public function edit($id_mobil)
     {
@@ -36,25 +53,14 @@ class CarController extends Controller
         $car_update = Car::find($id_mobil);
         if($car_update)
         {
-            $validator = Validator::make($request->all(), [
-                'nama_mobil' => 'required|string',
-                'jumlah' => 'required|integer',
-            ]);
-            if ($validator->fails())
-            {
-                return redirect('/admin/car');
-            }
             $car_update -> update($request->all());
         }
         return redirect('/admin/car');
     }
     public function delete($id_mobil)
     {
-        $car_delete = Car::find($id_mobil);
-        if($car_delete)
-        {
-            $car_delete -> delete();   
-        }
-        return redirect('/admin/car');
+        $data = Car::find($id_mobil);
+        $data->delete();
+        return redirect('/admin');
     }
 }

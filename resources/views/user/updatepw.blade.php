@@ -18,30 +18,27 @@
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <form action="saveupdate" method="post">
+            <form action="updatepassword" method="post">
                 @csrf
                 @method('PUT')
 
                 <div class="mb-3">
-                    <label for="nama">Name</label>
-                    <input class="form-control" id="nama" name="name" value="{{ old('name', Auth::user()->name) }}" >
+                    <label for="current_password">Current Password</label>
+                    <input type="password" class="form-control" id="current_password" name="current_password" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input class="form-control" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" >
+                    <label for="new_password">New Password</label>
+                    <input type="password" class="form-control" id="new_password" name="new_password" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="phone">Phone</label>
-                    <input class="form-control" id="phone" name="phone" value="{{ old('phone', Auth::user()->phone) }}" >
+                    <label for="new_password_confirmation">Confirm New Password</label>
+                    <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" required>
                 </div>
-                <p>Update Password? <a href="updatepw">Click Here</a></p>
 
                 <button type="submit" class="btn btn-danger">Save</button>
             </form>
-
-          <br>
           <a href="profile">
             <button type="button" class="btn btn-secondary mt-2">back</button>
           </a>

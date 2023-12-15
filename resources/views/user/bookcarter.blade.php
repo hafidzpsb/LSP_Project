@@ -6,22 +6,22 @@
     <title>Telkom Travel</title>
     <link rel="icon" href="assets/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('../css/style.css') }}">
-</head>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
       <div class="container-fluid">
           <a href="#">
-              <img src="assets/Telkom Travel.png" style="width: 100px; margin: 10px">
+              <img src="../assets/Telkom Travel.png" style="width: 100px; margin: 10px">
           </a>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="#ourcar">Our Car</a>
-            <a class="nav-link" href="#lokasikami">Our Location</a>
-            <a class="nav-link" href="services">Our Services</a>
-            <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link" href="/#ourcar">Our Car</a>
+            <a class="nav-link" href="/#lokasikami">Our Location</a>
+            <a class="nav-link" href="/services">Our Services</a>
+            <a class="nav-link" href="/about.html">About Us</a>
           </div>
         </div>
         <div style="width: 300px;" class="container text-end">
@@ -41,26 +41,23 @@
                         </li>
                     @endif
                 @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                        <a class="dropdown-item" href="user/profile">
-                            <P>Profile</P>
-                        </a>
-                    </div>
-                </li>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
                 @endguest
             </ul>
           </div>
@@ -68,37 +65,53 @@
       </div>
     </nav>
 <!-- Modal -->
-<div class="modal fade " id="modallogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="  modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Username</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-          </div>
-          <div>
-            <p>don't have an account yet? <a href="">CLick Here</a></p>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <a href="user_index.html">
-          <button type="button" class="btn btn-danger">Login</button>
-        </a>
+<section class="page-section bg-primary text-dark mb-0" id="ticket">
+    <div class="container">
+      <h2 class="page-section-heading text-center text-dark">Rent Car</h2>
+      <div class="container" style="max-width: 800px;">
+        <div class="container">
+          <center>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Foto</th>
+                <th scope="col">Nama Mobil</th>
+                <th scope="col">Harga Sewa</th>
+                <th scope="col">Kategori Mobil</th>
+                <th scope="col"><center>Aksi</center></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($bookcarter as $carter)
+                @if($carter->tersedia)
+                    <tr>
+                        <td>
+                        <img src="{{ $carter->foto }}" height="150px" width="300px" alt="No Image">
+                        </td>
+                        <td>{{ $carter->nama_mobil }}</td>
+                        <td>{{ $carter->harga_mobil }}</td>
+                        <td>
+                        @foreach ($carter->type as $kategori)
+                            {{ $kategori->nama_kategori }},
+                        @endforeach
+                        </td>
+                        <td width="100px" center><center><a href="/user/{{ $carter->id_mobil }}" class="btn btn-warning mb-3 mt-3 w-100">Sewa</a></center></td>
+                    </tr>
+                @else
+                @endif
+              @endforeach
+            </tbody>
+          </table>
+          <center><a style="margin-bottom: 50px;" class="btn btn-success" href="riwayat/index">Riwayat</a></center>
+          </center>
+          <!-- <center>
+            <h6>You must be logged in to be able to book your ticket</h6>
+            <button style="margin-bottom: 50px;" type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#modallogin">Login</button>
+          </center> -->
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
   <footer>
     <div class="container-fluid" style="background-color: rgb(96, 96, 96);">
       <div class="container text-center">

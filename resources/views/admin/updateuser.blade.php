@@ -14,36 +14,36 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">
-          <h3 class="text-center">My Profile</h3>
+          <h3 class="text-center">Edit User</h3>
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <form action="saveupdate" method="post">
+            <form action="saveupdateuser/{{$data->id}}" method="post">
                 @csrf
-                @method('PUT')
+                @method('POST')
 
                 <div class="mb-3">
                     <label for="nama">Name</label>
-                    <input class="form-control" id="nama" name="name" value="{{ old('name', Auth::user()->name) }}" >
+                    <input class="form-control" id="nama" name="name" value="{{ $data->name }}" >
                 </div>
 
                 <div class="mb-3">
                     <label for="email">Email</label>
-                    <input class="form-control" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" >
+                    <input class="form-control" id="email" name="email" value="{{ $data->email }}" >
                 </div>
 
                 <div class="mb-3">
                     <label for="phone">Phone</label>
-                    <input class="form-control" id="phone" name="phone" value="{{ old('phone', Auth::user()->phone) }}" >
+                    <input class="form-control" id="phone" name="phone" value="{{ $data->phone }}" >
                 </div>
-                <p>Update Password? <a href="updatepw">Click Here</a></p>
+
 
                 <button type="submit" class="btn btn-danger">Save</button>
             </form>
 
           <br>
           <a href="profile">
-            <button type="button" class="btn btn-secondary mt-2">back</button>
+            <button type="button" class="btn btn-secondary mt-2">Back</button>
           </a>
         </div>
       </div>

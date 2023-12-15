@@ -63,21 +63,21 @@
         <!-- Cashier menu -->
         <li class="nav-item">
           <a class="nav-link active" href="#" data-menu="home">
-            Home
+            Daftar Sewa
           </a>
         </li>
-        <!-- View Stock menu -->
-        <li class="nav-item">
-            <a class="nav-link" href="#" data-menu="view-add-route">
-              Add Travel Route
-            </a>
-          </li>
-        <!-- Add Stock menu -->
+
         <li class="nav-item">
           <a class="nav-link" href="#" data-menu="add-add-car">
             Add Car
           </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-menu="view-add-route">
+              Add Travel Route
+            </a>
+          </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#" data-menu="userMNG">
             User Management
@@ -108,7 +108,7 @@
     <div class="container mt-4">
         <div id="home-content" style="display: none;">
             <div class="container">
-                <h1>Product List</h1>
+                <h1>Daftar Sewa</h1>
                 <form action="admin/find" method="get">
                     @method('get')
                         <input name="search" type="text" class="form-control-sm" placeholder="Search">
@@ -117,34 +117,40 @@
 
                 <table class="table mt-3">
                     <thead>
-                    <tr>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th>Stock</th>
-                        <th>Exp Date</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                    </tr>
+                      <tr>
+                          <th>ID Pesanan</th>
+                          <th>Nama Mobil</th>
+                          <th>Foto</th>
+                          <th>Tanggal Sewa</th>
+                          <th>Tanggal Pengembalian</th>
+                          <th>Harga Sewa</th>
+                          <th>Nama Peminjam</th>
+                          <th>Status</th>
+                          <th colspan="2" scope="colgroup"><center>Aksi</center></th>
+                      </tr>
                     </thead>
-                <tbody>
-                    {{-- @foreach ($products as $value) --}}
-                  <tr>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>
-                     x
-                    </td>
-                  </tr>
-                  {{-- @endforeach --}}
-                </tbody>
-              </table>
+                    <tbody>
+                      @foreach ($carter_index as $carter)
+                        <tr>
+                          <td>{{$carter->id_carter}}</td>
+                          <td>{{$carter->car->nama_mobil}}</td>
+                          <td>
+                            <img src="{{ $carter->car->foto }}" height="150px" width="300px" alt="No Image">
+                          </td>
+                          <td>{{$carter->tanggal_sewa}}</td>
+                          <td>{{$carter->tanggal_pengembalian}}</td>
+                          <td>{{$carter->car->harga_mobil}}</td>
+                          <td>{{$carter->car->use_for}}</td>
+                          <td>{{$carter->status}}</td>
+                          <form action="/admin/carter/konfirmasi_pengembalian/{{ $carter->id_carter }}" method="POST">
+                            @csrf
+                            <td width="100px" center><center><button type="submit" class="btn btn-warning mb-3 mt-3 w-100" {{ $carter->status === 'menunggu' ? null : 'disabled'}}>Konfirmasi Pengembalian</button></center></td>
+                          </form>
+                          <td width="100px" center><center><a href="/admin/carter/delete/{{ $carter->id_carter }}" class="btn btn-danger mb-3 mt-3 w-100" {{ $carter->status === 'dikembalikan' ? null : 'disabled'}}>Hapus</a></center></td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                </table>
             </div>
     </div>
 
@@ -160,27 +166,31 @@ dasd
         <div class="container">
             <h1>Add Car</h1>
 
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">ID Mobil</th>
-                        <th scope="col">Nama Mobil</th>
-                        <th scope="col">Jumlah</th>
-                        <th colspan="2" scope="colgroup"><center>Aksi</center></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     @foreach ($carData as $car)
-                      <tr>
-                        <td>{{ $car->id_mobil }}</td>
-                        <td>{{ $car->nama_mobil }}</td>
-                        <td>{{ $car->jumlah }}</td>
-                        <td width="100px" center><center><a href="/admin/car/edit/{{ $car->id_mobil }}" class="btn btn-warning mb-3 mt-3 w-100">Ubah</a></center></td>
-                        <td width="100px" center><center><a href="/admin/car/delete/{{ $car->id_mobil }}" class="btn btn-danger mb-3 mt-3 w-100">Hapus</a></center></td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID Mobil</th>
+                    <th scope="col">Nama Mobil</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Use For</th>
+                    <th scope="col">Jumlah</th>
+                    <th colspan="2" scope="colgroup"><center>Aksi</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($car_index as $car)
+                  <tr>
+                    <td>{{ $car->id_mobil }}</td>
+                    <td>{{ $car->nama_mobil }}</td>
+                    <td>{{ $car->type }}</td>
+                    <td>{{ $car->use_for }}</td>
+                    <td>{{ $car->jumlah }}</td>
+                    <td width="100px" center><center><a href="/admin/car/edit/{{ $car->id_mobil }}" class="btn btn-warning mb-3 mt-3 w-100">Ubah</a></center></td>
+                    <td width="100px" center><center><a href="/admin/car/delete/{{ $car->id_mobil }}" class="btn btn-danger mb-3 mt-3 w-100">Hapus</a></center></td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
                   <center><button style="margin-bottom: 50px;" type="button" class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#modalstore">Tambah +</button></center>
             </div><!-- Modal store data-->
             <div class="modal fade" id="modalstore" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -190,13 +200,36 @@ dasd
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Data</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <form action="/admin/car" method="POST" enctype="multipart/form-data">
+                  <form action="/admin/addcar" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                       <div class="mb-3">
                         <label for="nama_mobil" class="form-label">Nama Mobil</label>
                         <input type="text" class="form-control" id="nama_mobil" name="nama_mobil">
                       </div>
+                      <div class="mb-3">
+                        <label for="nama_mobil" class="form-label">Tipe Mobil</label>
+                        <select class="form-select" name="type" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="mpv">MPV</option>
+                            <option value="suv">SUV</option>
+                            <option value="crossover">Crossover</option>
+                            <option value="hatchback">Hatchback</option>
+                            <option value="sedan">sedan</option>
+                            <option value="van">Van</option>
+                          </select>
+                      </div>
+
+                      <label for="use_for" class="form-label">Digunakan Untuk :</label>
+                      <br>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="checkbox_values[]" value="rental">
+                        <label class="form-check-label" for="inlineCheckbox1">Rental</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="checkbox_values[]" value="carter">
+                        <label class="form-check-label" for="inlineCheckbox2">Carter</label>
+                    </div>
                       <div class="mb-3">
                         <label for="jumlah" class="form-label">Jumlah</label>
                         <input type="number" class="form-control" id="jumlah" name="jumlah">
@@ -217,7 +250,49 @@ dasd
     <div id="userMNG-content" style="display: none;">
         <div class="container">
             <h1>User Management</h1>
-            hdakhdk
+            <a href="admin/adduser">
+                <button class="btn btn-danger">Add User</button>
+            </a>
+            <table class="table mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">ID User</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tipe</th>
+                    <th colspan="2" scope="colgroup"><center>Aksi</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($user_index as $user)
+                  <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <?php if ($user -> level == 0)
+                    { ?>
+                      <td> Admin </td>
+                    <?php } else { ?>
+                      <td> User</td>
+                    <?php } ?>
+                    <td>
+                        <form action="/admin/updateuser/{{ $user->id }}" method="post">
+                        @csrf
+                        @method('post')
+                        <input class="btn btn-warning" type="submit" value="Edit Data">
+                    </form>
+                    <form action="/admin/deleteuser/{{ $user->id }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
         </div>
     </div>
 

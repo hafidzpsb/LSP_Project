@@ -6,8 +6,8 @@
     <title>Telkom Travel</title>
     <link rel="icon" href="assets/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('../css/style.css') }}">
-</head>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
       <div class="container-fluid">
@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="#ourcar">Our Car</a>
-            <a class="nav-link" href="#lokasikami">Our Location</a>
-            <a class="nav-link" href="services">Our Services</a>
-            <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link" href="/#ourcar">Our Car</a>
+            <a class="nav-link" href="/#lokasikami">Our Location</a>
+            <a class="nav-link" href="/services">Our Services</a>
+            <a class="nav-link" href="/about.html">About Us</a>
           </div>
         </div>
         <div style="width: 300px;" class="container text-end">
@@ -41,26 +41,23 @@
                         </li>
                     @endif
                 @else
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                        <a class="dropdown-item" href="user/profile">
-                            <P>Profile</P>
-                        </a>
-                    </div>
-                </li>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
                 @endguest
             </ul>
           </div>
@@ -98,6 +95,43 @@
       </div>
     </div>
   </div>
+</div>
+<div class="container text-center" style="margin-top: 100px;">
+    <h1 class="">Our Services</h1>
+    <section class="mb-5">
+        <h3 class="mt-3">Car Travel</h3>
+        <p>
+          Dengan layanan Car Travel kami, Anda dapat menikmati perjalanan yang nyaman dan aman ke destinasi pilihan Anda. Kendaraan kami dilengkapi dengan fasilitas yang modern dan sopir berpengalaman untuk memastikan perjalanan Anda berjalan lancar.
+        </p>
+        <p>
+          <strong>Keunggulan Car Travel:</strong>
+        </p>
+        <ul>
+          <li>Kenyamanan Utama: Kendaraan kami dirancang untuk memberikan kenyamanan tertinggi selama perjalanan.</li>
+          <li>Fleksibilitas Jadwal: Sesuaikan waktu perjalanan Anda sesuai kebutuhan, tanpa harus mengikuti jadwal transportasi umum.</li>
+          <li>Sopir Berpengalaman: Sopir kami terlatih dan berpengalaman, memastikan keamanan dan keamanan selama perjalanan.</li>
+        </ul>
+        <a href="user/booktravel">
+            <button style="margin-bottom: 50px;" type="button" class="btn btn-danger">Book Travel</button>
+          </a>
+      </section>
+      <section>
+        <h2>Car Charter</h2>
+        <p>
+          Layanan Car Charter kami memberikan fleksibilitas penuh kepada Anda. Anda dapat menyewa kendaraan kami untuk keperluan khusus, seperti perjalanan bisnis, wisata pribadi, atau acara khusus. Dengan Car Charter, Anda memiliki kendali penuh atas rute perjalanan dan jadwal, memberikan kebebasan dan kenyamanan tanpa batasan.
+        </p>
+        <p>
+          <strong>Keunggulan Car Charter:</strong>
+        </p>
+        <ul>
+          <li>Kendali Penuh: Tentukan sendiri rute perjalanan dan jadwal sesuai keinginan Anda.</li>
+          <li>Privasi dan Eksklusivitas: Nikmati perjalanan tanpa gangguan, dengan kendaraan eksklusif untuk keperluan Anda.</li>
+          <li>Pilihan Kendaraan: Pilih kendaraan sesuai dengan kebutuhan, mulai dari mobil mewah hingga van besar untuk kelompok besar.</li>
+        </ul>
+        <a href="user/bookcarter">
+            <button style="margin-bottom: 50px;" type="button" class="btn btn-danger">Book The Car</button>
+          </a>
+      </section>
 </div>
   <footer>
     <div class="container-fluid" style="background-color: rgb(96, 96, 96);">
