@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\User;
+use App\Models\Carter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,7 +15,8 @@ class AdminController extends Controller
     public  function index(){
         $user_index = User::all();
         $car_index = Car::all();
-        return view('admin.index', compact('user_index','car_index'));
+        $carter_index = Carter::all();
+        return view('admin.index', compact('user_index','car_index', 'carter_index'));
     }
     public function adduser() {
         return view('admin.adduser');

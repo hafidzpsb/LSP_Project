@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CarterController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -28,7 +29,7 @@ Route::get('/', function () {
 });
 Route::get('/services', [UserController::class, 'services']);
 
-Route::prefix('user')->middleware('auth','isUser')->group(function(){
+Route::prefix('/user')->middleware('auth','isUser')->group(function(){
     Route::get('/booktravel', [BookController::class, 'booktravel']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::get('/updateprofile', [UserController::class, 'updateprof']);
@@ -36,6 +37,12 @@ Route::prefix('user')->middleware('auth','isUser')->group(function(){
 
     Route::get('/updatepw', [UserController::class, 'updatepw']);
     Route::put('/updatepassword', [UserController::class, 'updatepassword']);
+
+    Route::get('/bookcarter', [CarterController::class, 'bookcarter']);
+    Route::get('/{id_mobil}', [CarterController::class, 'sewa_create']);
+    Route::post('/{id_carter}', [CarterController::class, 'sewa']);
+    Route::get('/riwayat/index', [CarterController::class, 'riwayat']);
+    Route::post('/pengembalian/{id_carter}', [CarterController::class, 'pengembalian']);
 });
 
 
@@ -49,14 +56,15 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
     Route::delete('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
     Route::post('/updateuser/{id}', [AdminController::class, 'updateuser']);
     Route::post('updateuser/saveupdateuser/{id}', [AdminController::class, 'saveupdate']);
-    Route::get('/car', [CarController::class, 'index']);
-    Route::get('/car/delete/{id_mobil}', [CarController::class, 'delete']);
-    Route::post('/car/update/{id_mobil}', [CarController::class, 'update']);
-    Route::post('/addcar', [CarController::class, 'addcar']);
-    Route::post('/car/delete/{id}', [CarController::class, 'delete']);
 
-    Route::post('/car', [CarController::class, 'store'])->name('car.store');
-    Route::get('/car/edit/{id_mobil}', [CarController::class, 'edit'])->name('car.edit');
+    Route::get('/car/create', [CarController::class, 'create']);
+    Route::post('/car/store', [CarController::class, 'store']);
+    Route::get('/car/edit/{id_mobil}', [CarController::class, 'edit']);
+    Route::post('/car/update/{id_mobil}', [CarController::class, 'update']);
+    Route::get('/car/delete/{id_mobil}', [CarController::class, 'delete']);
+
+    Route::post('/carter/konfirmasi_pengembalian/{id_carter}', [CarterController::class, 'konfirmasi_pengembalian']);
+    Route::get('/carter/delete/{id_carter}', [CarterController::class, 'delete']);
 
     Route::get('/type', [TypeController::class, 'index'])->name('type.index');
     Route::post('/type', [TypeController::class, 'store'])->name('type.store');

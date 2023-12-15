@@ -63,7 +63,7 @@
         <!-- Cashier menu -->
         <li class="nav-item">
           <a class="nav-link active" href="#" data-menu="home">
-            Home
+            Daftar Sewa
           </a>
         </li>
 
@@ -108,7 +108,49 @@
     <div class="container mt-4">
         <div id="home-content" style="display: none;">
             <div class="container">
+                <h1>Daftar Sewa</h1>
+                <form action="admin/find" method="get">
+                    @method('get')
+                        <input name="search" type="text" class="form-control-sm" placeholder="Search">
+                        <button type="submit" class="btn btn-primary">Find</button>
+                    </form>
 
+                <table class="table mt-3">
+                    <thead>
+                      <tr>
+                          <th>ID Pesanan</th>
+                          <th>Nama Mobil</th>
+                          <th>Foto</th>
+                          <th>Tanggal Sewa</th>
+                          <th>Tanggal Pengembalian</th>
+                          <th>Harga Sewa</th>
+                          <th>Nama Peminjam</th>
+                          <th>Status</th>
+                          <th colspan="2" scope="colgroup"><center>Aksi</center></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($carter_index as $carter)
+                        <tr>
+                          <td>{{$carter->id_carter}}</td>
+                          <td>{{$carter->car->nama_mobil}}</td>
+                          <td>
+                            <img src="{{ $carter->car->foto }}" height="150px" width="300px" alt="No Image">
+                          </td>
+                          <td>{{$carter->tanggal_sewa}}</td>
+                          <td>{{$carter->tanggal_pengembalian}}</td>
+                          <td>{{$carter->car->harga_mobil}}</td>
+                          <td>{{$carter->car->use_for}}</td>
+                          <td>{{$carter->status}}</td>
+                          <form action="/admin/carter/konfirmasi_pengembalian/{{ $carter->id_carter }}" method="POST">
+                            @csrf
+                            <td width="100px" center><center><button type="submit" class="btn btn-warning mb-3 mt-3 w-100" {{ $carter->status === 'menunggu' ? null : 'disabled'}}>Konfirmasi Pengembalian</button></center></td>
+                          </form>
+                          <td width="100px" center><center><a href="/admin/carter/delete/{{ $carter->id_carter }}" class="btn btn-danger mb-3 mt-3 w-100" {{ $carter->status === 'dikembalikan' ? null : 'disabled'}}>Hapus</a></center></td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                </table>
             </div>
     </div>
 
