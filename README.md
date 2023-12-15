@@ -16,7 +16,7 @@ Nama Project : Telkom Travel
 
 ## **Skema Database**
 
-![Alt text](https://drive.google.com/file/d/1_48SuqheBPl3-Pg5MFvwFlQOYvQ1zvAA/view?usp=drive_link))
+![Alt text](https://drive.google.com/file/d/1_48SuqheBPl3-Pg5MFvwFlQOYvQ1zvAA/view?usp=drive_link)
 
 ## **Pembagian Tugas**
 
