@@ -19,6 +19,26 @@ class CarController extends Controller
         $car_create = Type::all();
         return view('admin.car_create', compact('car_create'));
     }
+
+    public function addcar(Request $request) {
+        // dd($request);
+        $validator = Validator::make($request->all(), [
+            'nama_mobil' => 'required|string',
+            'type' => 'required|string',
+            'checkbox_values' => 'required|array',
+            'jumlah' => 'required|integer',
+        ]);
+
+        $car = new Car();
+        $car->nama_mobil = $request->input('nama_mobil');
+        $car->type = $request->input('type');
+        $car->use_for = implode(',', $request->input('checkbox_values'));
+        $car->jumlah = $request->input('jumlah');
+
+        $car->save();
+        return redirect('/admin');
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -56,13 +76,10 @@ class CarController extends Controller
         }
         return redirect('/admin/car');
     }
-    public function delete($id_mobil)
+    public function delete($id)
     {
-        $car_delete = Car::find($id_mobil);
-        if($car_delete)
-        {
-            $car_delete -> delete();
-        }
-        return redirect('/admin/car');
+        $data =Car::find($id);
+        $data->delete();
+        return redirect('/admin');
     }
 }
