@@ -31,7 +31,7 @@ Admin dan User harus melakuukan registrasi dan login apabila ingin mengakses web
 ## **Pembagian Tugas**
 
 - Achmad Rozan Chaidir
-- Muhammad Hafidz Alkhair Pasaribu
+- Muhammad Hafidz Alkhair Pasaribu (Kategori, Unit Mobil, Sewa Mobil)
 
 ## **Demo**
 
