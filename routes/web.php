@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
@@ -30,11 +31,25 @@ Route::get('/services', [UserController::class, 'services']);
 Route::prefix('user')->middleware('auth','isUser')->group(function(){
     Route::get('/booktravel', [BookController::class, 'booktravel']);
     Route::get('/profile', [UserController::class, 'profile']);
+    Route::get('/updateprofile', [UserController::class, 'updateprof']);
+    Route::put('/saveupdate', [UserController::class, 'save']);
+
+    Route::get('/updatepw', [UserController::class, 'updatepw']);
+    Route::put('/updatepassword', [UserController::class, 'updatepassword']);
 });
+
+
+
+
 Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
-    Route::get('/', function () {
-        return view('admin/index');
-    });
+
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/adduser', [AdminController::class, 'adduser']);
+    Route::post('/addusr', [AdminController::class, 'addusr']);
+    Route::delete('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
+    Route::post('/updateuser/{id}', [AdminController::class, 'updateuser']);
+    Route::post('updateuser/saveupdateuser/{id}', [AdminController::class, 'saveupdate']);
+
     Route::get('/car', [CarController::class, 'index']);
     Route::post('/car', [CarController::class, 'store'])->name('car.store');
     Route::get('/car/edit/{id_mobil}', [CarController::class, 'edit'])->name('car.edit');
